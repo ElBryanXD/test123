@@ -1,0 +1,78 @@
+using System;
+
+namespace practica2unidad3
+{
+	class Program
+	{
+		public static void Main(string[] args)
+		{
+			string matricula, marca, modelo, año, descripcion;
+			auto[] lista = new auto[50];
+			int i=0;
+			int op=0;
+			
+			while(op!=3)
+			{
+				 Console.WriteLine("\n\n AUTOS USADOS PREMIUM");
+				 Console.WriteLine("1.- Ingresar Auto a Consignacion");
+				 Console.WriteLine("2.- Mostrar Inventario");
+				 Console.WriteLine("3.- Salir");
+				 Console.Write(" Digite opción ");
+				 op = int.Parse(Console.ReadLine());
+				 
+				 switch(op)
+				 {
+				 	case 1:
+				 		Console.Write("Introduzca la matricula:");
+				 		matricula = Console.ReadLine();
+				 		Console.Write("Introduzca la marca:");
+				 		marca = Console.ReadLine();
+				 		Console.Write("Introduzca el modelo:");
+				 		modelo = Console.ReadLine();
+				 		Console.Write("Introduzca el año:");
+				 		año = Console.ReadLine();
+				 		Console.Write("Introduzca la descripcion del vehiculo:");
+				 		descripcion = Console.ReadLine();
+				 		
+				 		auto nuevo = new auto(matricula,marca,modelo,año,descripcion);
+				 		lista.SetValue(nuevo,i);
+				 		i+=1;
+				 		break;
+				 	case 2:
+				 		for(int x=0; x<=i-1; x++)
+				 		{
+				 			 nuevo=lista[x];
+				 			 Console.Write("Vehiculo {0}:", x+1 +"\n");
+				 			 Console.Write("Matricula:"+ nuevo.Matricula +"\n");
+				 			 Console.Write("Marca:"+ nuevo.Marca+"\n");
+				 			 Console.Write("Modelo:"+ nuevo.Modelo +"\n");
+				 			 Console.Write("Año:"+ nuevo.Año +"\n");
+				 			 Console.Write("Descripción:"+ nuevo.Descripcion +"\n\n\n");
+				 		}
+				 		break;
+				 }
+			}
+			
+			Console.Write("Press any key to continue . . . ");
+			Console.ReadKey(true);
+		}
+	}
+	
+	class auto
+	{
+		 public string Matricula;
+		 public string Marca;
+		 public string Modelo;
+		 public string Año;
+		 public string Descripcion;
+		 
+		 public auto (string matricula, string marca, string modelo, string año, string descripcion)
+		 {
+		 	this.Matricula = matricula;
+		 	this.Marca = marca;
+		 	this.Modelo = modelo;
+		 	this.Año = año;
+		 	this.Descripcion = descripcion;
+		 }
+	}
+}
